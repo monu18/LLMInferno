@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package textgeneration;
+
+service TextGenerationService {
+  // Generate a single sentence based on a query
+  rpc GenerateSentence (GenerateRequest) returns (GenerateResponse);
+
+  // Generate the next word given a context
+  rpc GenerateNextWord (WordRequest) returns (WordResponse);
+}
+
+// Request message for generating a sentence
+message GenerateRequest {
+  string query = 1; // The input query
+  int32 max_length = 2; // Maximum length of the generated sentence
+}
+
+// Response message for generating a sentence
+message GenerateResponse {
+  repeated string sentences = 1; // Generated sentences
+}
+
+// Request message for generating the next word
+message WordRequest {
+  repeated string context = 1; // The context words
+}
+
+// Response message for generating the next word
+message WordResponse {
+  string next_word = 1; // The next word
+}
