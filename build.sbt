@@ -23,8 +23,10 @@ val slf4jLoggerVersion = "2.0.12"
 val typeSafeConfigVersion = "1.4.3"
 val ollamaVersion = "1.0.79"
 val grpcVersion = "1.64.0"
+val sprayJsonVersion = "1.3.6"
 val sparkVersion = "3.4.1"
 val awsSdkVersion = "2.26.25"
+val protobufJavaVersion = "4.27.1"
 val grpcNettyVersion = "1.65.1"
 val grpcProtobufVersion = "1.65.1"
 val scalapbVersion = "0.11.17"
@@ -43,6 +45,7 @@ libraryDependencies ++= Seq(
   "io.grpc" % "grpc-netty" % grpcNettyVersion,      // Transport layer
   "io.grpc" % "grpc-protobuf" % grpcProtobufVersion, // Protocol Buffers for gRPC
   "io.grpc" % "grpc-stub" % grpcVersion,           // Stub layer
+  "io.spray" %% "spray-json" % sprayJsonVersion,
 
   // Apache Spark for distributed computation
   "org.apache.spark" %% "spark-core" % sparkVersion,
@@ -53,13 +56,18 @@ libraryDependencies ++= Seq(
   "software.amazon.awssdk" % "core" % awsSdkVersion,
   "software.amazon.awssdk" % "s3" % awsSdkVersion,
   "software.amazon.awssdk" % "bedrock" % awsSdkVersion, // For Bedrock-specific operations
+  "software.amazon.awssdk" % "lambda" % awsSdkVersion,
 
   // Protobuf Java runtime
-  "com.google.protobuf" % "protobuf-java" % "4.27.1",
+  "com.google.protobuf" % "protobuf-java" % protobufJavaVersion,
   // ScalaPB runtime
   "com.thesamet.scalapb" %% "scalapb-runtime" % scalapbVersion,
   // ScalaPB gRPC runtime
   "com.thesamet.scalapb" %% "scalapb-runtime-grpc" % scalapbVersion,
+
+  // Testing libraries
+  "org.scalatest" %% "scalatest" % "3.2.18" % Test,
+  "org.mockito" %% "mockito-scala" % "1.16.42" % Test
 )
 
 // Assembly Plugin Settings
@@ -67,4 +75,17 @@ enablePlugins(AssemblyPlugin)
 
 assembly / assemblyJarName := "LLMInferno.jar"
 assembly / mainClass := Some("HW3")
+
+assembly / assemblyMergeStrategy := {
+  case PathList("META-INF", xs @ _*) =>
+    xs match {
+      case "MANIFEST.MF" :: Nil => MergeStrategy.discard
+      case "services" :: _      => MergeStrategy.concat
+      case _                    => MergeStrategy.discard
+    }
+  case "reference.conf" => MergeStrategy.concat
+  case x if x.endsWith(".proto") => MergeStrategy.rename
+  case x if x.contains("hadoop") => MergeStrategy.first
+  case _ => MergeStrategy.first
+}
 

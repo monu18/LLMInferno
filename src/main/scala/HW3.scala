@@ -3,7 +3,7 @@ import grpc.TextGenerationServiceImpl
 import aws.BedrockClient
 import ollama.OllamaClient
 import io.grpc.ServerBuilder
-import textgeneration.textgeneration.TextGenerationServiceGrpc
+import textgeneration.text_generation.TextGenerationServiceGrpc
 
 import scala.concurrent.ExecutionContext
 

@@ -1,10 +1,11 @@
 package grpc
 
-import textgeneration.textgeneration._
-import textgeneration.textgeneration.TextGenerationServiceGrpc.TextGenerationService
+import textgeneration.text_generation._
+import textgeneration.text_generation.TextGenerationServiceGrpc.TextGenerationService
 import aws.BedrockClient
 import ollama.OllamaClient
-import scala.concurrent.{Future, ExecutionContext}
+
+import scala.concurrent.{ExecutionContext, Future}
 
 class TextGenerationServiceImpl(
                                  bedrockClient: BedrockClient,
