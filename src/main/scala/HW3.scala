@@ -2,6 +2,7 @@ import akka.actor.ActorSystem
 import akka.stream.Materializer
 import aws.BedrockClient
 import aws.JsonProtocol.StringJsonFormat
+import com.typesafe.config.ConfigFactory
 import ollama.OllamaClient
 import spray.json._
 import org.slf4j.LoggerFactory
@@ -14,6 +15,8 @@ import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContext, Future, blocking}
 
 object HW3 extends App {
+  private val config = ConfigFactory.load()
+  private val outputPath = config.getString("app.outputDir")
   implicit val system: ActorSystem = ActorSystem("ConversationalAgentSystem")
   implicit val materializer: Materializer = Materializer(system)
   implicit val ec: ExecutionContext = system.dispatcher
@@ -27,10 +30,10 @@ object HW3 extends App {
   val initialPrompt = "Teach me about cloud computing"
 
   // Number of exchanges (termination condition)
-  val maxExchanges = 2
+  val maxExchanges = config.getInt("app.maxExchanges")
 
   // Ensure the output directory exists
-  val outputDir = Paths.get("src/main/resources/output")
+  private val outputDir = Paths.get(outputPath)
   if (!Files.exists(outputDir)) {
     Files.createDirectories(outputDir)
     logger.info(s"Output directory created at $outputDir")
