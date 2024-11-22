@@ -30,6 +30,8 @@ val protobufJavaVersion = "4.27.1"
 val grpcNettyVersion = "1.65.1"
 val grpcProtobufVersion = "1.65.1"
 val scalapbVersion = "0.11.17"
+val akkaHttpVersion = "10.5.3"
+val akkaVersion = "2.8.6"
 
 // Dependencies
 libraryDependencies ++= Seq(
@@ -64,6 +66,10 @@ libraryDependencies ++= Seq(
   "com.thesamet.scalapb" %% "scalapb-runtime" % scalapbVersion,
   // ScalaPB gRPC runtime
   "com.thesamet.scalapb" %% "scalapb-runtime-grpc" % scalapbVersion,
+
+  "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
+  "com.typesafe.akka" %% "akka-stream" % akkaVersion,
+  "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion, // For JSON marshalling
 
   // Testing libraries
   "org.scalatest" %% "scalatest" % "3.2.18" % Test,
