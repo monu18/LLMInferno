@@ -17,8 +17,8 @@ class OllamaClient {
   def generateNextQuery(previousResponse: String): String = {
     val prompt = s"how can you respond to the statement: $previousResponse"
     val options = new Options(Map[String, AnyRef](
-      "temperature" -> java.lang.Double.valueOf(0.7), // Adjust the temperature
-      "max_tokens" -> java.lang.Integer.valueOf(50)   // Limit the token count
+      "temperature" -> java.lang.Double.valueOf(0.7),
+      "max_tokens" -> java.lang.Integer.valueOf(50)
     ).asJava)
     api.generate(model, prompt, false, options).getResponse
   }
@@ -34,7 +34,9 @@ object OllamaClientApp extends App {
   try {
     // Call the client and print the result
     val response = ollamaClient.generateNextQuery(previousResponse)
+    println("--------------")
     println(s"Response from Ollama: $response")
+    println("--------------")
   } catch {
     case e: Exception =>
       println(s"Error occurred: ${e.getMessage}")

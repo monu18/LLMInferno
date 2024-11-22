@@ -21,8 +21,11 @@ class BedrockClient(implicit system: ActorSystem, materializer: Materializer, ec
   private val apiUrl = config.getString("aws.lambda.apiUrl") // API Gateway URL
 
   def generateSentence(prompt: String, maxTokens: Int): Future[JsValue] = {
+
+    val escapedPrompt = prompt.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n")
+
     val payload = s"""{
-      "prompt": "$prompt",
+      "prompt": "$escapedPrompt",
       "max_tokens": $maxTokens,
       "temperature": 0.7
     }"""
