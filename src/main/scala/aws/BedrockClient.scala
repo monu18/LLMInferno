@@ -25,7 +25,7 @@ class BedrockClient(implicit system: ActorSystem, materializer: Materializer, ec
     val escapedPrompt = prompt.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n")
 
     val payload = s"""{
-      "prompt": "$escapedPrompt",
+      "prompt": "Respond to: $escapedPrompt",
       "max_tokens": $maxTokens,
       "temperature": 0.7
     }"""

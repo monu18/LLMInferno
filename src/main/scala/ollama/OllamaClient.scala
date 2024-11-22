@@ -15,11 +15,14 @@ class OllamaClient {
   api.setRequestTimeoutSeconds(120) // Set timeout to 120 seconds
 
   def generateNextQuery(previousResponse: String): String = {
-    val prompt = s"how can you respond to the statement: $previousResponse"
+    // Update the prompt to request concise responses
+    val prompt = s"Please respond concisely in 50-60 words: $previousResponse"
+
     val options = new Options(Map[String, AnyRef](
-      "temperature" -> java.lang.Double.valueOf(0.7),
-      "max_tokens" -> java.lang.Integer.valueOf(50)
+      "temperature" -> java.lang.Double.valueOf(0.7), // Control creativity
+      "max_tokens" -> java.lang.Integer.valueOf(60)   // Limit the token count
     ).asJava)
+
     api.generate(model, prompt, false, options).getResponse
   }
 }
