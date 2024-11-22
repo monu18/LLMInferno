@@ -2,7 +2,7 @@ import akka.actor.ActorSystem
 import akka.stream.Materializer
 import aws.BedrockClient
 import aws.JsonProtocol.StringJsonFormat
-import com.typesafe.config.ConfigFactory
+import com.typesafe.config.{Config, ConfigFactory}
 import ollama.OllamaClient
 import spray.json._
 import org.slf4j.LoggerFactory
@@ -15,22 +15,30 @@ import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContext, Future, blocking}
 
 object HW3 extends App {
-  private val config = ConfigFactory.load()
+  private val logger = LoggerFactory.getLogger(getClass)
+  private val config: Config = ConfigFactory.load()
+
+  // Configuration with defaults
   private val outputPath = config.getString("app.outputDir")
+  private val maxExchanges = config.getInt("app.maxExchanges")
+  private val initialPrompt: String =
+    if (args.nonEmpty) args.mkString(" ")
+    else {
+      logger.error("No initial prompt provided as a command-line argument.")
+      sys.exit(1)
+    }
+
   implicit val system: ActorSystem = ActorSystem("ConversationalAgentSystem")
   implicit val materializer: Materializer = Materializer(system)
   implicit val ec: ExecutionContext = system.dispatcher
 
-  private val logger = LoggerFactory.getLogger(getClass)
+  logger.info("Application started with configuration:")
+  logger.info(s"Output Directory: $outputPath")
+  logger.info(s"Max Exchanges: $maxExchanges")
+  logger.info(s"Initial Prompt: $initialPrompt")
 
   val bedrockClient = new BedrockClient()
   val ollamaClient = new OllamaClient()
-
-  // Define the initial prompt
-  val initialPrompt = "Teach me about cloud computing"
-
-  // Number of exchanges (termination condition)
-  val maxExchanges = config.getInt("app.maxExchanges")
 
   // Ensure the output directory exists
   private val outputDir = Paths.get(outputPath)
