@@ -1,0 +1,11 @@
+[2024-11-24 00:51:56] User: What is cloud computing
+
+[2024-11-24 00:52:01] Bedrock:  Cloud computing is a model for delivering computing resources over the internet. Cloud computing enables ubiquitous access to shared pools of configurable system resources and higher-level services that can be rapidly provisioned with minimal management effort or service provider interaction. Cloud computing is a
+
+[2024-11-24 00:52:03] Ollama: Cloud computing is a model for delivering computing resources over the internet, providing on-demand access to scalable, shared resources and services. It offers flexible, pay-as-you-go pricing, minimal management requirements, and rapid provisioning, making it an attractive option for businesses and individuals alike. This scalability enables efficient resource utilization and cost savings.
+
+[2024-11-24 00:52:05] Bedrock: 
+Cloud computing is a model for delivering computing resources over the internet, providing on-demand access to scalable, shared resources and services. It offers flexible, pay-as-you-go pricing, minimal management requirements, and rapid provisioning, making
+
+[2024-11-24 00:52:08] Ollama: Cloud computing provides on-demand access to scalable resources and services, offering flexible pricing, minimal management, and rapid provisioning. This model enables users to quickly scale up or down according to their needs, reducing costs and increasing efficiency. It also promotes agility and reliability in delivering IT services and applications over the internet.
+

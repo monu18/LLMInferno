@@ -1,12 +1,9 @@
-[2024-11-22 12:17:04] User: Teach me about cloud computing
+[2024-11-24 02:09:28] User: Teach me about cloud computing
 
-[2024-11-22 12:17:07] Bedrock: 
-Cloud computing is a model for delivering computing resources over the internet. Cloud computing allows users to access software, storage, and other computing resources over the internet instead of their local machines. This allows users to access their data and applications from anywhere, at
+[2024-11-24 02:09:34] Bedrock: 
+Cloud computing is a model for delivering computing resources over the internet. Cloud computing allows users to access software, storage, and other computing resources via the internet with a network connection.
 
-[2024-11-22 12:17:18] Ollama: anytime and on any device with an internet connection. Cloud computing offers scalability, flexibility, and cost-effectiveness, making it a popular choice for businesses and individuals alike. It enables remote work, collaboration, and storage of data in a secure and reliable manner, providing users with seamless access to their applications and resources.
+Cloud computing has become increasingly popular in recent years due to its many
 
-[2024-11-22 12:17:20] Bedrock: 
-Cloud computing offers scalability, flexibility, and cost-effectiveness, making it a popular choice for businesses and individuals alike. It enables remote work, collaboration, and storage of data in a secure and reliable manner, providing users with seamless access to
-
-[2024-11-22 12:17:23] Ollama: applications and resources from anywhere, at any time. Cloud computing reduces infrastructure costs, increases efficiency, and enhances disaster recovery capabilities. Its scalability allows businesses to quickly adapt to changing demands, while its security features protect sensitive data from cyber threats, ensuring a reliable and secure computing experience.
+[2024-11-24 02:09:34] System: Error occurred: Connection refused
 
