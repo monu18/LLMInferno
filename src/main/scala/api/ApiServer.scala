@@ -239,4 +239,8 @@ object TextGenerationAPIServer extends App {
   sys.addShutdownHook {
     system.terminate()
   }
+
+  while (!system.whenTerminated.isCompleted) {
+    Thread.sleep(1000) // Keep the thread alive
+  }
 }

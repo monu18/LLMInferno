@@ -13,7 +13,7 @@ lazy val root = (project in file("."))
       scalapb.gen(grpc = true) -> (Compile / sourceManaged).value / "scalapb"
     ),
     Compile / PB.includePaths := Seq((Compile / sourceDirectory).value / "protobuf"), // Specify custom protobuf path
-//    Compile / mainClass := Some("HW3"),
+    Compile / mainClass := Some("api.TextGenerationAPIServer"),
 //    Compile / unmanagedSourceDirectories += baseDirectory.value / "src" / "main"
   )
 
@@ -80,7 +80,7 @@ libraryDependencies ++= Seq(
 enablePlugins(AssemblyPlugin)
 
 assembly / assemblyJarName := "LLMInferno.jar"
-assembly / mainClass := None
+assembly / mainClass := Some("api.TextGenerationAPIServer")
 
 assembly / assemblyMergeStrategy := {
   case PathList("META-INF", xs @ _*) =>
