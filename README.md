@@ -21,6 +21,24 @@ The LLMInferno project implements a distributed conversational agent system usin
 - **Akka HTTP Version:** 10.5.3
 - **Amazon Bedrock Integration**
 
+## curl for client to access(from anywhere) the Health checkup, Bedrock, Ollama and Conversation brtween Bedrock and ollama
+
+```bash
+curl ec2-18-212-89-181.compute-1.amazonaws.com:8080/api/health
+```
+
+```bash
+curl -X POST ec2-18-212-89-181.compute-1.amazonaws.com:8080/api/generate/bedrock   -H "Content-Type: application/json"   -d '{"prompt": "what is cloud computing", "maxTokens": 100}'
+```
+
+```bash
+curl -X POST ec2-18-212-89-181.compute-1.amazonaws.com:8080/api/generate/ollama   -H "Content-Type: application/json"   -d '{"prompt": "what is cloud computing", "maxTokens": 100}'
+```
+
+```bash
+curl -X POST ec2-18-212-89-181.compute-1.amazonaws.com:8080/api/generate/conversation -H 'Content-Type: application/json' -d '{"prompt":"Tell me about cloud computing?","maxTokens":100,"maxExchanges":3,"saveToFile":true}'
+```
+
 ## Running the Test File
 Test files can be found under the directory `src/test`:
 ```bash
