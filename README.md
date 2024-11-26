@@ -6,7 +6,7 @@
 ## Introduction
 The LLMInferno project implements a distributed conversational agent system using Amazon Bedrock and Ollama models. The application is designed to respond to client queries using RESTful APIs and integrates both trained LLM and local models for enhanced conversation capabilities. This project is the final part of a series to develop and deploy LLM-based generative systems using Spark, gRPC, AWS Lambda, and Akka HTTP.
 
-**Video Link:** [TODO] (The video explains the deployment of the conversational application(between Bedrock and Ollama) in the AWS EMR Cluster and the project structure.)
+**Video Link:** [https://youtu.be/A4RKetC9_5U] (The video explains the deployment of the conversational application(between Bedrock and Ollama) in the AWS EMR Cluster and the project structure.)
 
 ## Features
 - **Distributed Conversational Agent:** Combines Bedrock LLM and local Ollama models to handle dynamic queries.
