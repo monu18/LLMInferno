@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  api-server:
+    image: 867344461242.dkr.ecr.us-east-1.amazonaws.com/conversational-agent:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - AWS_ACCESS_KEY_ID=AKIA4T4OCFW5AUGUUVMM
+      - AWS_SECRET_ACCESS_KEY=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
+      - AWS_REGION=us-east-1
+    volumes:
+      - ./src/main/resources/output:/app/output
+    depends_on:
+      - ollama
+    networks:
+      - app-network
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  ollama_data:

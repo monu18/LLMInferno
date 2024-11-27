@@ -8,6 +8,8 @@ The LLMInferno project implements a distributed conversational agent system usin
 
 **Video Link:** [https://youtu.be/A4RKetC9_5U] (The video explains the deployment of the conversational application(between Bedrock and Ollama) in the AWS EMR Cluster and the project structure.)
 
+## [Docker Setup & Deployment Guide](READMEDOCKER.md) Click here
+
 ## Features
 - **Distributed Conversational Agent:** Combines Bedrock LLM and local Ollama models to handle dynamic queries.
 - **RESTful API:** Built using Akka HTTP to provide seamless communication between client and server.

@@ -1,0 +1,13 @@
+target/
+project/target/
+.git/
+.gitignore
+.idea/
+*.iml
+.metals/
+.bloop/
+.bsp/
+output/
+README.md
+*.log
+.env
