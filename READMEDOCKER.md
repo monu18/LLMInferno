@@ -96,8 +96,8 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - AWS_ACCESS_KEY_ID=AKIA4T4OCFW5AUGUUVMM
-      - AWS_SECRET_ACCESS_KEY=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
+      - AWS_ACCESS_KEY_ID=<ACCESS KEY>
+      - AWS_SECRET_ACCESS_KEY=<SECRET KEY>
       - AWS_REGION=us-east-1
     volumes:
       - ./src/main/resources/output:/app/output
