@@ -1,0 +1,32 @@
+FROM eclipse-temurin:17-jdk
+
+WORKDIR /build
+
+# Install sbt
+RUN apt-get update && \
+    apt-get install -y curl && \
+    curl -L -o sbt.deb https://repo.scala-sbt.org/scalasbt/debian/sbt-1.9.4.deb && \
+    dpkg -i sbt.deb && \
+    apt-get update && \
+    apt-get install -y sbt
+
+# Copy all files
+COPY . .
+
+# Build the application
+RUN sbt clean compile assembly
+
+# Create output directory
+RUN mkdir -p /app/src/main/resources/output
+
+# Copy the jar and config
+RUN cp target/scala-2.12/LLMInferno.jar /app/app.jar && \
+    cp src/main/resources/application.conf /app/application.conf
+
+WORKDIR /app
+
+ENV JAVA_OPTS="-Dconfig.file=/app/application.conf"
+
+EXPOSE 8080
+
+CMD ["java", "-jar", "app.jar"]

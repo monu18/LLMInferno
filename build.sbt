@@ -99,3 +99,27 @@ assembly / assemblyMergeStrategy := {
   case _ => MergeStrategy.first
 }
 
+// Enable plugins
+enablePlugins(DockerPlugin)
+enablePlugins(JavaAppPackaging)
+
+// Docker specific settings
+Docker / packageName := "conversational-agent"
+Docker / version := "latest"
+Docker / dockerExposedPorts ++= Seq(8080)
+Docker / dockerBaseImage := "eclipse-temurin:17-jre-alpine"
+
+// Update the assemblyMergeStrategy
+assembly / assemblyMergeStrategy := {
+  case PathList("META-INF", xs @ _*) =>
+    xs match {
+      case "MANIFEST.MF" :: Nil => MergeStrategy.discard
+      case "services" :: _      => MergeStrategy.concat
+      case _                    => MergeStrategy.discard
+    }
+  case "reference.conf" => MergeStrategy.concat
+  case "application.conf" => MergeStrategy.concat
+  case x if x.endsWith(".proto") => MergeStrategy.rename
+  case x if x.contains("hadoop") => MergeStrategy.first
+  case _ => MergeStrategy.first
+}
