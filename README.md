@@ -8,6 +8,8 @@ The LLMInferno project implements a distributed conversational agent system usin
 
 **Video Link:** [https://youtu.be/A4RKetC9_5U] (The video explains the deployment of the conversational application(between Bedrock and Ollama) in the AWS EMR Cluster and the project structure.)
 
+**Video Link:** [https://youtu.be/6vDU1u95Dz8] (The video explains the containerization of a project using Docker, ECR and EC2)
+
 ## [Docker Setup & Deployment Guide](READMEDOCKER.md) Click here
 
 ## Features
@@ -27,19 +29,30 @@ The LLMInferno project implements a distributed conversational agent system usin
 ## curl for client to access(from anywhere) the Health checkup, Bedrock, Ollama and Conversation brtween Bedrock and ollama
 
 ```bash
-curl ec2-18-212-89-181.compute-1.amazonaws.com:8080/api/health
+curl http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/health
 ```
 
 ```bash
-curl -X POST ec2-18-212-89-181.compute-1.amazonaws.com:8080/api/generate/bedrock   -H "Content-Type: application/json"   -d '{"prompt": "what is cloud computing", "maxTokens": 100}'
+curl -X POST http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/generate/bedrock \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "What is cloud computing", "maxTokens": 100}'
 ```
 
 ```bash
-curl -X POST ec2-18-212-89-181.compute-1.amazonaws.com:8080/api/generate/ollama   -H "Content-Type: application/json"   -d '{"prompt": "what is cloud computing", "maxTokens": 100}'
+curl -X POST http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/generate/ollama \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "What is cloud computing", "maxTokens": 100}'
 ```
 
 ```bash
-curl -X POST ec2-18-212-89-181.compute-1.amazonaws.com:8080/api/generate/conversation -H 'Content-Type: application/json' -d '{"prompt":"Tell me about cloud computing?","maxTokens":100,"maxExchanges":3,"saveToFile":true}'
+curl -X POST http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/generate/conversation \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "What is cloud computing",
+    "maxTokens": 100,
+    "maxExchanges": 4,
+    "saveToFile": true
+  }'
 ```
 
 ## Running the Test File
