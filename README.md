@@ -35,20 +35,20 @@ curl http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/health
 ```bash
 curl -X POST http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/generate/bedrock \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "What is cloud computing", "maxTokens": 100}'
+  -d '{"prompt": "Tell me what is cloud computing", "maxTokens": 100}'
 ```
 
 ```bash
 curl -X POST http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/generate/ollama \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "What is cloud computing", "maxTokens": 100}'
+  -d '{"prompt": "Tell me what is cloud computing", "maxTokens": 100}'
 ```
 
 ```bash
 curl -X POST http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/generate/conversation \
   -H "Content-Type: application/json" \
   -d '{
-    "prompt": "What is cloud computing",
+    "prompt": "Tell me what is cloud computing",
     "maxTokens": 100,
     "maxExchanges": 4,
     "saveToFile": true
