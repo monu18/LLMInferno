@@ -174,19 +174,32 @@ curl http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/health
 ```
 
 ### 4.2 Test API Endpoints
-1. **Bedrock Generation**
+1. **Health Checkup**
+```bash
+curl http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/health
+```
+
+2. **Bedrock Generation**
 ```bash
 curl -X POST http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/generate/bedrock \
   -H "Content-Type: application/json" \
-  -d '{"prompt": "Tell me a story", "maxTokens": 100}'
+  -d '{"prompt": "What is cloud computing", "maxTokens": 100}'
 ```
 
-2. **Conversation Chain**
+3. **Ollama Generation**
+```bash
+curl -X POST http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/generate/ollama \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "What is cloud computing", "maxTokens": 100}'
+```
+
+
+4. **Conversation Chain**
 ```bash
 curl -X POST http://ec2-54-235-16-132.compute-1.amazonaws.com:8080/api/generate/conversation \
   -H "Content-Type: application/json" \
   -d '{
-    "prompt": "Tell me about AI",
+    "prompt": "What is cloud computing",
     "maxTokens": 100,
     "maxExchanges": 2,
     "saveToFile": true
