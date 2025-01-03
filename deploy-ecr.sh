@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set AWS credentials and region
-export AWS_ACCESS_KEY_ID=AKIA4T4OCFW5AUGUUVMM
-export AWS_SECRET_ACCESS_KEY=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
+export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
+export AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>
 export AWS_REGION=us-east-1
 
 # Get AWS account ID
