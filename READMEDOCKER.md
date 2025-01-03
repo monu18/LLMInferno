@@ -21,8 +21,8 @@
    ```bash
    aws configure
    # Enter your credentials:
-   AWS Access Key ID: AKIA4T4OCFW5AUGUUVMM
-   AWS Secret Access Key: TPQnhQshjhKlmBpL9C+fVTaKIsL4IJ03yNdCbKsa
+   AWS Access Key ID: <AWS Access Key ID>
+   AWS Secret Access Key: <AWS Secret Access Key>
    Default region: us-east-1
    ```
 
